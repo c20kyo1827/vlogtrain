@@ -25,5 +25,10 @@ indexNamespace.addElementListener = function addElementListener(){
         })
         let json = await response.json();
         console.log(json);
+        if("ok" in json){
+            const msgBox = document.getElementById("result");
+            console.log(msgBox);
+            msgBox.innerText = json["info"];
+        }
     });
 }

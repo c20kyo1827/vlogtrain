@@ -29,7 +29,8 @@ def send_verilog():
 	print(result.stdout)
 	return \
 		jsonify({ \
-			"ok": True
+			"ok": True,
+			"info": result.stdout
 		}), 200
 
 app.config.from_object("config")
