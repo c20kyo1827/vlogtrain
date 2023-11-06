@@ -22,15 +22,23 @@ def send_verilog():
 		f.writelines(decoded_code)
 	print(decoded_code)
 	iverilog_command = "iverilog test.v"
-	subprocess.run(iverilog_command, shell=True)
+	process = subprocess.Popen(iverilog_command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 	vvp_command = "vvp a.out"
-	result = subprocess.run(vvp_command, shell=True, stdout=subprocess.PIPE, text=True)
+	runResult = subprocess.run(vvp_command, shell=True, stdout=subprocess.PIPE, text=True)
 	print("This is result")
-	print(result.stdout)
+	print(runResult.stdout)
+	print(type(runResult.stdout))
+
+	stdout, stderr = process.communicate()
+	
+	if process.returncode==0:
+		result = runResult.stdout
+	else:
+		result = stderr.decode("utf-8")
 	return \
 		jsonify({ \
 			"ok": True,
-			"info": result.stdout
+			"info": result
 		}), 200
 
 app.config.from_object("config")
