@@ -23,15 +23,14 @@ def send_verilog():
 	print(decoded_code)
 	iverilog_command = "iverilog test.v"
 	process = subprocess.Popen(iverilog_command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-	vvp_command = "vvp a.out"
-	runResult = subprocess.run(vvp_command, shell=True, stdout=subprocess.PIPE, text=True)
-	print("This is result")
-	print(runResult.stdout)
-	print(type(runResult.stdout))
-
 	stdout, stderr = process.communicate()
 	
 	if process.returncode==0:
+		vvp_command = "vvp a.out"
+		runResult = subprocess.run(vvp_command, shell=True, stdout=subprocess.PIPE, text=True)
+		print("This is result")
+		print(runResult.stdout)
+		print(type(runResult.stdout))
 		result = runResult.stdout
 	else:
 		result = stderr.decode("utf-8")
