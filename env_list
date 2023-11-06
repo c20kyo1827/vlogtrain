@@ -1,0 +1,4 @@
+os.getenv("MYSQL_HOST","localhost"),
+os.getenv("MYSQL_USER","root"),
+os.getenv("MYSQL_ROOT_PASSWD","root")
+os.getenv("PARTNER_KEY", "test")
