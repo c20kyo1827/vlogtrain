@@ -1,0 +1,11 @@
+@media (min-width: 360px) and (max-width: 1200px){
+    .main{
+        width: 100%;
+    }
+}
+
+@media (max-width: 360px){
+    .main{
+        width: 100%;
+    }
+}

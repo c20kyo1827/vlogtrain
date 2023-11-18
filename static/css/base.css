@@ -1,0 +1,348 @@
+.body{
+    margin: 0px;
+}
+
+/*====================*/
+/*  header*/
+/*====================*/
+
+.header{
+    width: 100%;
+    height: 54px;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+}
+
+/* navigation*/
+.navigation{
+    display: flex;
+    height: 60px;
+    align-items: center;
+    background-color: #448899;
+    gap: 30px;
+}
+
+.navigation-title{
+    flex: none;
+
+    cursor: pointer;
+
+    font-weight: 700;
+    font-size: 30px;
+    font-family: "Noto Sans TC";
+    color: #FFFFFF;
+    line-height: 34px;
+
+    display: flex;
+    align-items: center;
+}
+.navigation-title:hover{
+    color: #bedbe2;
+}
+
+.navigation-option{
+    flex: auto;
+    
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.navigation-button--setting{
+    font-weight: 500;
+    font-size: 16px;
+    font-family: "Noto Sans TC";
+    line-height: 13.3px;
+
+    border-width : 0;
+    color: #FFFFFF;
+    background-color: #448899;
+
+    display: flex;
+    align-items:center;
+    justify-content:center;
+
+    cursor: pointer;
+}
+.navigation-button--setting:hover{
+    color: #bedbe2;
+}
+
+.navigation-option-sign{
+    box-sizing: border-box;
+    padding: 10px;
+
+    display: none;
+}
+.navigation-option-sign-out{
+    box-sizing: border-box;
+    padding: 10px;
+
+    display: none;
+}
+.navigation-option-sign--show{
+    display: block;
+}
+
+/*====================*/
+/*  sign-in/sign-up
+/*====================*/
+.sign-container{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 2;
+
+    box-shadow: 0px 4px 60px 0px #AAAAAA;
+    background: rgb(0, 0, 0, 25%);
+
+    display: none;
+    justify-content: center;
+}
+.sign-container--show{
+    display: flex;
+}
+
+.sign-container__sign-box{
+    width: 340px;
+    height: 275px;
+    position: relative;
+    top: 80px;
+
+    border-radius: 6px;
+    background-color: #FFFFFF;
+
+    display: flex;
+    flex-direction: column;
+}
+.sign-container__sign-box--appear-animation{
+    animation: signBoxAppear .2s ease-in;
+}
+.sign-container__sign-box--sign-in-default-size{
+    height: 275px;
+}
+.sign-container__sign-box--sign-in-message-size{
+    /* add the sign-box__message height & margin-top */
+    height: 307px;
+}
+.sign-container__sign-box--sign-up-default-size{
+    height: 332px;
+}
+.sign-container__sign-box--sign-up-message-size{
+    /* add the sign-box__message height & margin-top */
+    height: 364px;
+}
+
+.sign-box__bar{
+    height: 10px;
+    background: linear-gradient(270deg, #337788 0%, #66AABB 100%);
+}
+
+.sign-box__title{
+    width: 100%;
+    height: 27px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    text-align: center;
+
+    font-weight: 700;
+    font-size: 24px;
+    font-family: "Noto Sans TC";
+    color: #666666;
+    line-height: 24px;
+}
+
+.sign-box__close-button{
+    width: 30px;
+    height: 30px;
+
+    position: absolute;
+    top: 20px;
+    right: 10px;
+
+    background-image: url("../figure/button/icon_close.png");
+    background-size: 16px 16px;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    cursor: pointer;
+}
+.sign-box__close-button:hover{
+    border-radius: 5px;
+    box-shadow: 0 3px 5px rgba(104, 104, 104, 0.8);
+}
+
+.sign-box__form{
+    width: 310px;
+    margin: 0 auto;
+}
+
+.sign-box__form-input{
+    width: 100%;
+    height: 47px;
+    margin: 0 auto 10px;
+    box-sizing: border-box;
+
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+}
+.sign-box__form-input-text{
+    font-weight: 500;
+    font-size: 16px;
+    font-family: "Noto Sans TC";
+    color: #757575;
+    line-height: 13.3px;
+}
+.sign-box__form-password-box{
+    position: relative;
+    z-index: 3;
+}
+
+.sign-box__form-eye{
+    /* set parent's z-index to prevent reference grandparent */
+    position: absolute;
+    top: 30%;
+    right: 5%;
+    width: 20px;
+    height: 20px;
+
+    cursor: pointer;
+
+    color: #757575;
+}
+
+
+
+.sign-box__form-button{
+    width: 100%;
+    height: 47px;
+
+    border:0 ;
+    border-radius: 5px;
+    background-color: #448899;
+
+    text-align: center;
+    font-weight: 400;
+    font-size: 19px;
+    font-family: "Noto Sans TC";
+    color: #FFFFFF;
+    line-height: 16px;
+
+    cursor: pointer;
+}
+.sign-box__form-button:hover{
+    box-shadow: 0 3px 5px rgba(104, 104, 104, 0.8);
+}
+
+.sign-box__message{
+    width: 100%;
+    height: 22px;
+    margin-top: 10px;
+
+    text-align: center;
+    font-weight: 500;
+    font-size: 16px;
+    font-family: "Noto Sans TC";
+    color: #666666;
+    line-height: 13.3px;
+}
+.sign-box__message--cursor{
+    cursor: pointer;
+}
+.sign-box__message--cursor:hover{
+    color: #9e9e9e;
+}
+.sign-box__message--hide{
+    display: none;
+}
+.sign-box__message--show{
+    display: block;
+}
+.sign-box__message--success{
+    color: green;
+}
+.sign-box__message--fail{
+    color: red;
+}
+
+/*====================*/
+/*  footer
+/*====================*/
+
+.footer{
+    width: 100%;
+    height: 104px;
+
+    background-color: #757575;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer__textbox{
+    width: 400px;
+    height: 24px;
+    box-sizing: border-box;
+    padding: 5px;
+
+    font-weight: 700;
+    font-size: 14px;
+    font-family: "Noto Sans TC";
+    line-height: 13.3px;
+
+    color: #FFFFFF;
+}
+
+@media (min-width: 1200px){
+    .navigation{
+        width: 100%;
+    }
+}
+
+@media (min-width: 360px) and (max-width: 1200px){
+    .navigation{
+        width: 100%;
+    }
+}
+
+@media (max-width: 360px){
+    .navigation{
+        width: 100%;
+    }
+}
+
+@keyframes signBoxAppear {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    25% {
+        transform: scale(0.25);
+        opacity: 0.25;
+    }
+    50% {
+        transform: scale(0.5);
+        opacity: 0.5;
+    }
+    75% {
+        transform: scale(0.75);
+        opacity: 0.75;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

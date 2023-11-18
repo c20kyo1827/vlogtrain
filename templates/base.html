@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta charset="utf-8" />
+    <title>{%block title%} {%endblock%}</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/base.css">
+    <script src="https://kit.fontawesome.com/46aeea356d.js" crossorigin="anonymous"></script>
+    {%block css%} {%endblock%}
+</head>
+<body class="body">
+    <header class="header">
+        <nav class="navigation">
+            <div class="navigation-title">Vlog Train Code</div>
+            <button class="navigation-option-problem navigation-button--setting">Problem Sets</button>
+            <button class="navigation-option-playground navigation-button--setting">Playground</button>
+            <button class="navigation-option-sign navigation-button--setting navigation-option-sign--show">Login/Register</button>
+            <button class="navigation-option-sign-out navigation-button--setting">Logout</button>
+        </nav>
+    </header>
+    <div></div> <!-- Add a empty element to shift all element -->
+    <div class="sign-container" id="sign-container__sign-in">
+        <div class="sign-container__sign-box sign-container__sign-box--sign-in-default-size sign-container__sign-box--appear-animation">
+            <div class="sign-box__bar"></div>
+            <div class="sign-box__title">Login Your System</div>
+            <div class="sign-box__close-button"></div>
+            <div class="sign-box__form">
+                <input type="email" class="sign-box__form-input sign-box__form-input-text" id="sign-in-email" placeholder="Your Email" name="email" required>
+                <div class="sign-box__form-password-box">
+                    <input type="password" class="sign-box__form-input sign-box__form-input-text" id="sign-in-password" placeholder="Your Password" name="password" required>
+                    <i class="fa-solid fa-eye sign-box__form-eye" id="sign-in-eye"></i>
+                </div>
+                <button type="submit" class="sign-box__form-button">Login account</button>
+                <div class="sign-box__message sign-box__message--hide" id="sign-box__message-info"></div>
+                <div class="sign-box__message sign-box__message--cursor">Don't have an account? Click here to register</div>
+            </div>
+        </div>
+    </div>
+    <div class="sign-container" id="sign-container__sign-up">
+        <div class="sign-container__sign-box sign-container__sign-box--sign-up-default-size">
+            <div class="sign-box__bar"></div>
+            <div class="sign-box__title">Register An Account</div>
+            <div class="sign-box__close-button"></div>
+            <div class="sign-box__form">
+                <input type="text" class="sign-box__form-input sign-box__form-input-text" id="sign-up-name" placeholder="Your Name" name="name" required>
+                <input type="email" class="sign-box__form-input sign-box__form-input-text" id="sign-up-email" placeholder="Your Email" name="email" required>
+                <div class="sign-box__form-password-box">
+                    <input type="password" class="sign-box__form-input sign-box__form-input-text" id="sign-up-password" placeholder="Your Password" name="password" required>
+                    <i class="fa-solid fa-eye sign-box__form-eye" id="sign-up-eye"></i>
+                </div>
+                <button type="submit" class="sign-box__form-button">Register new account</button>
+                <div class="sign-box__message sign-box__message--hide" id="sign-box__message-info"></div>
+                <div class="sign-box__message sign-box__message--cursor">Already hava an account? Click here to login</div>
+            </div>
+        </div>
+    </div>
+    {%block main%} {%endblock%}
+    <footer class="footer">
+        <div class="footer__textbox">
+            COPYRIGHT © 2023 Vlog Train Code
+        </div>
+    </footer>
+    <script src="../static/js/base.js"></script>
+    {%block script%} {%endblock%}
+</body>
+</html>

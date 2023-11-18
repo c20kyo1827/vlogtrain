@@ -13,32 +13,38 @@ CORS(app)
 @app.route("/")
 def index():
 	return render_template("index.html")
+@app.route("/playground")
+def playground():
+	return render_template("playground.html")
+@app.route("/problem_sets")
+def problem_sets():
+	return render_template("problem_sets.html")
 
-@app.route("/api/sendVerilog", endpoint="/api/sendVerilog", methods=['POST'])
-def send_verilog():
-	data = request.get_json()
-	decoded_code = urllib.parse.unquote(data["code"])
-	with open("test.v", "w") as f:
-		f.writelines(decoded_code)
-	print(decoded_code)
-	iverilog_command = "iverilog test.v"
-	process = subprocess.Popen(iverilog_command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-	stdout, stderr = process.communicate()
+# @app.route("/api/sendVerilog", endpoint="/api/sendVerilog", methods=['POST'])
+# def send_verilog():
+# 	data = request.get_json()
+# 	decoded_code = urllib.parse.unquote(data["code"])
+# 	with open("test.v", "w") as f:
+# 		f.writelines(decoded_code)
+# 	print(decoded_code)
+# 	iverilog_command = "iverilog test.v"
+# 	process = subprocess.Popen(iverilog_command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+# 	stdout, stderr = process.communicate()
 	
-	if process.returncode==0:
-		vvp_command = "vvp a.out"
-		runResult = subprocess.run(vvp_command, shell=True, stdout=subprocess.PIPE, text=True)
-		print("This is result")
-		print(runResult.stdout)
-		print(type(runResult.stdout))
-		result = runResult.stdout
-	else:
-		result = stderr.decode("utf-8")
-	return \
-		jsonify({ \
-			"ok": True,
-			"info": result
-		}), 200
+# 	if process.returncode==0:
+# 		vvp_command = "vvp a.out"
+# 		runResult = subprocess.run(vvp_command, shell=True, stdout=subprocess.PIPE, text=True)
+# 		print("This is result")
+# 		print(runResult.stdout)
+# 		print(type(runResult.stdout))
+# 		result = runResult.stdout
+# 	else:
+# 		result = stderr.decode("utf-8")
+# 	return \
+# 		jsonify({ \
+# 			"ok": True,
+# 			"info": result
+# 		}), 200
 
 app.config.from_object("config")
 print(app.config)

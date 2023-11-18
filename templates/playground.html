@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{%block title%}Playground - Vlog Train Code{%endblock%}
+{%block css%}
+    <link rel="stylesheet" type="text/css" href="../static/css/playground.css">
+{%endblock%}
+{%block main%}
+    <main class="main">
+        <div>
+            This is a playground which can provide you a interface to run simple Verilog simulations by using <a href="https://steveicarus.github.io/iverilog">Icarus Verilog</a>. You can run a simulation of anything you want.
+        </div>
+        <div>
+            This website just provide a basic waveform interface. It is quite limiting for debugging. The waveform oscilloscope is from <a href="https://wavedrom.com/">WaveDrom</a> which show the waveform with json format.
+        </div>
+    </main>
+{%endblock%}
+{%block script%}
+    <script src="../static/js/playground.js"></script>
+{%endblock%}

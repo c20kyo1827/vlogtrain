@@ -1,23 +1,30 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta charset="utf-8" />
-    <title>Stage3</title>
+{% extends 'base.html' %}
+{%block title%}Vlog Train Code{%endblock%}
+{%block css%}
     <link rel="stylesheet" type="text/css" href="../static/css/index.css">
-</head>
-<body>
-    <main>
+{%endblock%}
+{%block main%}
+    <main class="main">
+        <div> Vlog Train Code - Introduction </div>
         <div>
-        <textarea rows="30" cols="100" id="code">
-            
-        </textarea>
-        <button id="submit">submit</button>
+            <p>
+                Vlog Train Code provide some collection of simple digital circuit design exercises for practicing.
+                The supported language is <a href="https://ieeexplore.ieee.org/document/1620780">Verilog</a>.
+            </p>
         </div>
-        <div id="result">
-
+        <div> Vlog Train Code - How to use </div>
+        <div>
+            <ol>
+                <li>Choose an exercise in the <a href="/problem_sets">Problem set</a></li>
+                <li>Write your design in Verilog</li>
+                <li>Submit, simluate and debug if necessary</li>
+            </ol>
+            <p>
+                If you want to track you progress, please click the Login/Register to check your status.
+            </p>
         </div>
     </main>
+{%endblock%}
+{%block script%}
     <script src="../static/js/index.js"></script>
-</body>
-</html>
+{%endblock%}
