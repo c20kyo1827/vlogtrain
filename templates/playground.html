@@ -2,17 +2,66 @@
 {%block title%}Playground - Vlog Train Code{%endblock%}
 {%block css%}
     <link rel="stylesheet" type="text/css" href="../static/css/playground.css">
+    <link rel="stylesheet" type="text/css" href="../util/thirdparty/codemirror5/lib/codemirror.css">
+    <link rel="stylesheet" type="text/css" href="../util/thirdparty/codemirror5/theme/3024-day.css">
 {%endblock%}
 {%block main%}
     <main class="main">
-        <div>
-            This is a playground which can provide you a interface to run simple Verilog simulations by using <a href="https://steveicarus.github.io/iverilog">Icarus Verilog</a>. You can run a simulation of anything you want.
+        <div class="info-title"> Iverilog</div>
+        <div class="info-content">
+            <p>
+                This is a playground which can provide you a interface to run simple Verilog simulations by using <a href="https://steveicarus.github.io/iverilog">Icarus Verilog</a>. You can run a simulation of anything you want.
+            </p>
+            <p>
+                This website just provide a basic waveform interface. It is quite limiting for debugging. The waveform oscilloscope is from <a href="https://wavedrom.com/">WaveDrom</a> which show the waveform with json format.
+            </p>
         </div>
-        <div>
-            This website just provide a basic waveform interface. It is quite limiting for debugging. The waveform oscilloscope is from <a href="https://wavedrom.com/">WaveDrom</a> which show the waveform with json format.
+        <div class="info-title"> Code Pannel</div>
+        <div class="code-pannel">
+            <textarea class="code-editor">
+    module top_module ();
+        reg clk=0;
+        always #5 clk = ~clk;  // Create clock with period=10
+        initial `probe_start;   // Start the timing diagram
+
+        `probe(clk);        // Probe signal "clk"
+
+        // A testbench
+        reg in=0;
+        initial begin
+            #10 in <= 1;
+            #10 in <= 0;
+            #20 in <= 1;
+            #20 in <= 0;
+            $display ("Hello world! The current time is (%0d ps)", $time);
+            #50 $finish;            // Quit the simulation
+        end
+
+        invert inst1 ( .in(in) );   // Sub-modules work too.
+
+    endmodule
+
+    module invert(input in, output out);
+        assign out = ~in;
+
+        `probe(in);	// Sub-modules can also have `probe()
+        `probe(out);
+    endmodule
+            </textarea>
+        </div>
+        <div class="control-pannel">
+            <button class="info-content playground-button--setting">Submit</button>
+            <button class="info-content playground-button--setting">Submit (new window)</button>
+        </div>
+        <div class="info-title"> Simulation Result</div>
+        <div class="code-result">
+
         </div>
     </main>
 {%endblock%}
 {%block script%}
+    
     <script src="../static/js/playground.js"></script>
+    <script src="../util/thirdparty/codemirror5/lib/codemirror.js"></script>
+    <script src="../util/thirdparty/codemirror5/mode/verilog/verilog.js"></script>
 {%endblock%}

@@ -1,0 +1,73 @@
+.info-title{
+    font-weight: 700;
+    font-size: 30px;
+    font-family: "Noto Sans TC";
+    color: #000000;
+    line-height: 34px;
+}
+
+.info-content{
+    font-weight: 500;
+    font-size: 18px;
+    font-family: "Noto Sans TC";
+    color: #000000;
+    line-height: 34px;
+}
+
+.info-href{
+    font-weight: 700;
+    color: #448899;
+}
+
+.code-pannel{
+    margin-bottom: 20px;
+    background-color: #448899;
+}
+
+.code-editor{
+    width: 90%;
+    overflow: hidden;
+    resize: none;
+}
+
+.control-pannel{
+    margin-bottom: 20px;
+
+    display: flex;
+    gap: 20px;
+}
+
+.code-result{
+    margin-bottom: 20px;
+}
+
+.playground-button--setting{
+    cursor: pointer;
+    border: #FFFFFF;
+    border-radius: 5px;
+    background-color: #448899;
+    color: #FFFFFF;
+}
+.playground-button--setting:hover{
+    color: #bedbe2;
+    box-shadow: 0 3px 5px rgba(104, 104, 104, 0.8);
+}
+
+@media (min-width: 1000px){
+    .main{
+        margin: auto;
+        width: 1000px;
+    }
+}
+
+@media (min-width: 360px) and (max-width: 1000px){
+    .main{
+        width: 100%;
+    }
+}
+
+@media (max-width: 360px){
+    .main{
+        width: 100%;
+    }
+}

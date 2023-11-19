@@ -1,6 +1,7 @@
 from flask import *
 from flask_cors import CORS
 import cmd
+import os
 import subprocess
 import urllib.parse
 app=Flask(__name__)
@@ -8,6 +9,11 @@ app.config["JSON_AS_ASCII"]=False
 app.config["TEMPLATES_AUTO_RELOAD"]=True
 # app.json.ensure_ascii = False
 CORS(app)
+
+# Util
+@app.route('/util/<path:filename>')
+def util_files(filename):
+    return send_from_directory(os.path.join(app.root_path, 'util'), filename)
 
 # Pages
 @app.route("/")
