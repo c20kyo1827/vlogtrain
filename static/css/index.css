@@ -1,4 +1,32 @@
-@media (min-width: 360px) and (max-width: 1200px){
+.info-title{
+    font-weight: 700;
+    font-size: 30px;
+    font-family: "Noto Sans TC";
+    color: #000000;
+    line-height: 34px;
+}
+
+.info-content{
+    font-weight: 500;
+    font-size: 18px;
+    font-family: "Noto Sans TC";
+    color: #000000;
+    line-height: 34px;
+}
+
+.info-href{
+    font-weight: 700;
+    color: #448899;
+}
+
+@media (min-width: 1000px){
+    .main{
+        margin: auto;
+        width: 1000px;
+    }
+}
+
+@media (min-width: 360px) and (max-width: 1000px){
     .main{
         width: 100%;
     }

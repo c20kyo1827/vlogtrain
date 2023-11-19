@@ -126,7 +126,6 @@ baseNamespace.initialization = function initialization(){
     let header = document.querySelector(".header");
     let headerCSS = window.getComputedStyle(header);
     let sibling = header.nextElementSibling;
-    console.log(sibling);
     if(window.getComputedStyle(sibling).position === "fixed") return;
     sibling.style.marginTop = headerCSS.height;
 
