@@ -136,5 +136,10 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+# Verilog
 test.v
 a.out
+
+# Upload the CodeMirror
+!util/thirdparty/codemirror5/lib/
