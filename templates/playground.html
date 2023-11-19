@@ -18,40 +18,11 @@
         </div>
         <div class="info-title"> Code Pannel</div>
         <div class="code-pannel">
-            <textarea class="code-editor">
-    module top_module ();
-        reg clk=0;
-        always #5 clk = ~clk;  // Create clock with period=10
-        initial `probe_start;   // Start the timing diagram
-
-        `probe(clk);        // Probe signal "clk"
-
-        // A testbench
-        reg in=0;
-        initial begin
-            #10 in <= 1;
-            #10 in <= 0;
-            #20 in <= 1;
-            #20 in <= 0;
-            $display ("Hello world! The current time is (%0d ps)", $time);
-            #50 $finish;            // Quit the simulation
-        end
-
-        invert inst1 ( .in(in) );   // Sub-modules work too.
-
-    endmodule
-
-    module invert(input in, output out);
-        assign out = ~in;
-
-        `probe(in);	// Sub-modules can also have `probe()
-        `probe(out);
-    endmodule
-            </textarea>
+            <textarea class="code-editor"></textarea>
         </div>
         <div class="control-pannel">
-            <button class="info-content playground-button--setting">Submit</button>
-            <button class="info-content playground-button--setting">Submit (new window)</button>
+            <button id="submit" class="info-content playground-button--setting">Submit</button>
+            <button id="submit-new-window" class="info-content playground-button--setting">Submit (new window)</button>
         </div>
         <div class="info-title"> Simulation Result</div>
         <div class="code-result">

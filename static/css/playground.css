@@ -28,6 +28,7 @@
     width: 90%;
     overflow: hidden;
     resize: none;
+    user-select: text;
 }
 
 .control-pannel{
@@ -38,6 +39,7 @@
 }
 
 .code-result{
+    background-color: lightgray;
     margin-bottom: 20px;
 }
 
