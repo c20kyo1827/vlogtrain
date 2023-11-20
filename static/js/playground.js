@@ -18,25 +18,28 @@ playgroundNamespace.initialization = function initialization(){
 
     myCodeMirrorEditor.getDoc().setValue(
 "module top_module ();\n\
-    reg clk=0;\n\
-    always #5 clk = ~clk;  // Create clock with period=10\n\
 \n\
     // A testbench\n\
-    reg in=0;\n\
+    reg[1:0] in=0;\n\
     initial begin\n\
-        #10 in <= 1;\n\
-        #10 in <= 0;\n\
-        #20 in <= 1;\n\
-        #20 in <= 0;\n\
+        #10 in <= 'b00;\n\
+        #10 in <= 'b01;\n\
+        #20 in <= 'b10;\n\
+        #20 in <= 'b11;\n\
         $display (\"Hello world! The current time is (%0d ps)\", $time);\n\
         #50 $finish;            // Quit the simulation\n\
     end\n\
 \n\
+    initial\n\
+    begin\n\
+        $dumpfile(\"top_module.vcd\");\n\
+        $dumpvars(0, top_module);\n\
+    end\n\
     invert inst1 ( .in(in) );   // Sub-modules work too.\n\
 \n\
 endmodule\n\
 \n\
-module invert(input in, output out);\n\
+module invert(input[1:0] in, output[1:0] out);\n\
     assign out = ~in;\n\
 endmodule"
     );
@@ -67,8 +70,19 @@ playgroundNamespace.addElementListener = function addElementListener(){
         let json = await response.json();
         if("ok" in json){
             const msgBox = document.querySelector(".code-result");
+            const waveBox = document.querySelector(".code-waveform");
             console.log(msgBox);
             msgBox.innerText = json["info"];
+            console.log(json["waveform"]);
+            const imagePath = json["waveform"].replace(/\\/g, '/');
+            console.log(imagePath);
+            const linkElement = document.createElement('a');
+            linkElement.classList.add("info-href");
+            linkElement.innerText = "Your waveform";
+            linkElement.href = imagePath;  // 设置超链接的目标 URL
+            console.log(linkElement);
+            waveBox.appendChild(linkElement);
+            // waveBox.style.backgroundImage = "url("+imagePath+")";
         }
     });
 }

@@ -43,6 +43,10 @@
     margin-bottom: 20px;
 }
 
+.code-waveform{
+    margin-bottom: 20px;
+}
+
 .playground-button--setting{
     cursor: pointer;
     border: #FFFFFF;

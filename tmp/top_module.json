@@ -1,0 +1,34 @@
+{
+    "signal": [
+        {
+            "name": "top_module/in",
+            "wave": "2222",
+            "data": [
+                "0",
+                "1",
+                "2",
+                "3"
+            ]
+        },
+        {
+            "name": "top_module/inst1/in",
+            "wave": "2222",
+            "data": [
+                "0",
+                "1",
+                "2",
+                "3"
+            ]
+        },
+        {
+            "name": "top_module/inst1/out",
+            "wave": "2222",
+            "data": [
+                "3",
+                "2",
+                "1",
+                "0"
+            ]
+        }
+    ]
+}

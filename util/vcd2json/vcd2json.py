@@ -139,5 +139,5 @@ if __name__=="__main__":
     # extractor.show_signals()
     json_data = extractor.dump_signal()
     svg = wavedrom.render(json_data)
-    svg.saveas("test.svg")
+    svg.saveas(prefix_name+".svg")
 

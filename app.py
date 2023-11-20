@@ -11,6 +11,9 @@ CORS(app)
 @app.route('/util/<path:filename>')
 def util_files(filename):
     return send_from_directory(os.path.join(app.root_path, 'util'), filename)
+@app.route('/tmp/<path:filename>')
+def tmp_files(filename):
+    return send_from_directory(os.path.join(app.root_path, 'tmp'), filename)
 
 # Pages
 @app.route("/")
