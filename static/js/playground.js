@@ -74,18 +74,19 @@ playgroundNamespace.addElementListener = function addElementListener(){
             console.log(msgBox);
             msgBox.innerText = json["info"];
             console.log(json["waveform"]);
-            const imagePath = json["waveform"].replace(/\\/g, '/');
-            console.log(imagePath);
-            const linkElement = document.createElement('a');
-            linkElement.classList.add("info-href");
-            linkElement.innerText = "Your waveform";
-            linkElement.href = imagePath;  // 设置超链接的目标 URL
-            console.log(linkElement);
             while (waveBox.firstChild) {
                 waveBox.removeChild(waveBox.firstChild);
             }
-            waveBox.appendChild(linkElement);
-            // waveBox.style.backgroundImage = "url("+imagePath+")";
+            if(json["waveform"] != ""){
+                const imagePath = json["waveform"].replace(/\\/g, '/');
+                console.log(imagePath);
+                const linkElement = document.createElement('a');
+                linkElement.classList.add("info-href");
+                linkElement.innerText = "Your waveform";
+                linkElement.href = imagePath;
+                console.log(linkElement);
+                waveBox.appendChild(linkElement);
+            }
         }
     });
 }
