@@ -1,12 +1,10 @@
 from flask import *
+from flask_sqlalchemy import SQLAlchemy
 from routes.blueprint import blueprint_routes
 from flask_cors import CORS
 import os
 
 app=Flask(__name__)
-app.config["JSON_AS_ASCII"]=False
-app.config["TEMPLATES_AUTO_RELOAD"]=True
-# app.json.ensure_ascii = False
 CORS(app)
 
 # Util
@@ -24,6 +22,9 @@ def playground():
 @app.route("/problem_sets")
 def problem_sets():
 	return render_template("problem_sets.html")
+@app.route("/problem/<id>")
+def problem(id):
+	return render_template("problem.html")
 
 app.register_blueprint(blueprint_routes)
 app.config.from_object("config")

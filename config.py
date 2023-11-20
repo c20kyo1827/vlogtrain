@@ -7,3 +7,4 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 JSON_AS_ASCII = False
 JSON_ENSURE_ASCII = False
+TEMPLATES_AUTO_RELOAD = True
