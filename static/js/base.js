@@ -104,6 +104,17 @@ baseNamespace.addElementListener = function addBaseElementListener(){
             }
         })
     });
+
+    // Profile
+    document.querySelector(".navigation-option-profile").addEventListener("click", () => {
+        baseNamespace.checkSignState()
+        .then((isLogin) => {
+            if(isLogin)
+                window.location.href = "/member";
+            else
+                baseNamespace.showBox("sign-container__sign-in");
+        })
+    });
 }
 // Utitlity
 // Initialization
@@ -145,7 +156,7 @@ baseNamespace.handleSign = function handleSign(rootId){
         const email = document.getElementById("sign-in-email").value;
         const password = document.getElementById("sign-in-password").value;
         if(email=="" || password==""){
-            baseNamespace.addMessage(rootId, "信箱或密碼不可為空", true);
+            baseNamespace.addMessage(rootId, "Email or password can't be empty", true);
             return;
         }
         baseNamespace.signIn(
@@ -173,13 +184,13 @@ baseNamespace.handleSign = function handleSign(rootId){
         const email = document.getElementById("sign-up-email").value;
         const password = document.getElementById("sign-up-password").value;
         if(name=="" || email=="" || password==""){
-            baseNamespace.addMessage(rootId, "姓名或信箱或密碼不可為空", true);
+            baseNamespace.addMessage(rootId, "Name, email or password can't be empty", true);
             baseNamespace.clearInput();
             return;
         }
         const pattern = /^[0-9a-zA-Z][0-9a-zA-Z.]+@[0-9a-zA-Z]+\.[a-zA-Z]{2,}$/;
         if(!pattern.test(email)){
-            baseNamespace.addMessage(rootId, "無效的信箱", true);
+            baseNamespace.addMessage(rootId, "Invalid email", true);
             baseNamespace.clearInput();
             return;
         }
@@ -195,7 +206,7 @@ baseNamespace.handleSign = function handleSign(rootId){
                 baseNamespace.clearInput();
                 return;
             }
-            baseNamespace.addMessage(rootId, "註冊成功", false);
+            baseNamespace.addMessage(rootId, "Register succussfully", false);
             baseNamespace.clearInput();
             return;
         });

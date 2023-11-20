@@ -6,6 +6,13 @@ import logging
 import sys
 import os
 
+current_path = os.path.abspath(__file__)
+project_root = os.path.dirname(os.path.dirname(current_path))
+if os.path.dirname(current_path) in sys.path:
+    sys.path.remove(os.path.dirname(current_path))
+sys.path.append(project_root)
+from models.models import db, Member, Problem, Catagory
+
 logging.root.name = "Mysql db manager"
 logging.basicConfig(level=logging.INFO,
                 format='[%(levelname)-7s] %(name)s - %(message)s',
@@ -72,6 +79,37 @@ class mysql_mgr:
             logging.info(str(cursor.fetchall()))
         self.connect_and_run(run, True)
 
+    def show(self):
+        def run(cursor):
+            cursor.execute("USE VLOG")
+            cursor.execute("SHOW TABLES")
+            tables = cursor.fetchall()
+            logging.info("Tables : ")
+            logging.info(tables)
+            for table in tables:
+                logging.info("Table : " + str(table[0]))
+                cmd = "SELECT * FROM " + table[0]
+                cursor.execute(cmd)
+                info = cursor.fetchall()
+                for x in info: logging.info(x)
+        self.connect_and_run(run)
+
+    def add_member(self, data):
+        user = Member(name=data["name"], email=data["email"], password=data["password"])
+        db.session.add(user)
+        db.session.commit()
+
+    def get_member(self, data):
+        email = data.get('email')
+        password = data.get('password')
+
+        query = Member.query.filter_by(email=email)
+        if password:
+            query = query.filter_by(password=password)
+
+        print(query.first())
+        return query.first()
+
 # The argument parser
 def Argument():
     parser = argparse.ArgumentParser(description="Mysql db manager")
@@ -90,6 +128,9 @@ if __name__=="__main__":
         flow.reset()
     else:
         flow.init()
+
+    if arg.show:
+        flow.show()
 
     if arg.command != None:
         flow.runSQLCmd(arg.command)
