@@ -81,6 +81,9 @@ playgroundNamespace.addElementListener = function addElementListener(){
             linkElement.innerText = "Your waveform";
             linkElement.href = imagePath;  // 设置超链接的目标 URL
             console.log(linkElement);
+            while (waveBox.firstChild) {
+                waveBox.removeChild(waveBox.firstChild);
+            }
             waveBox.appendChild(linkElement);
             // waveBox.style.backgroundImage = "url("+imagePath+")";
         }
