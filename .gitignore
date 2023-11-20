@@ -138,8 +138,12 @@ dmypy.json
 cython_debug/
 
 # Verilog
-*.v
-*.out
+tmp/*.v
+tmp/*.out
+tmp/*.vcd
+tmp/*.svg
+tmp/*.json
+
 
 # Upload the CodeMirror
 !util/thirdparty/codemirror5/lib/
